@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'HansKendrick-Regular'; /* Имя шрифта */
+    src: url(fonts/HansKendrick-Regular.otf); /* Путь к файлу со шрифтом */
+   }
+   @mixin hansKendrick {
+       font-family: "HansKendrick-Regular",sans-serif ;
+       
+   }
+.body{
+    background-color: #e2e7ec;
+}
+.grid-container {
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 20px 20px;
+    grid-template-areas: 
+    "big-block big-block block1" //1
+    "big-block big-block block1" //2
+    "block2 block3 block4" //3
+    "block2 block3 block4"; //4
+    @media screen and (max-width:1100px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        "big-block big-block" //1
+        "big-block big-block " //2
+        "block2 block3" //3
+        "block2 block3"
+        "block1 block4" 
+        "block1 block4"//4  
+    }
+    @media screen and (max-width:576px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:  
+        "big-block"
+        "big-block"
+        "block1"
+        "block1"
+        "block2"
+        "block2"   
+        "block3"
+        "block3"
+        "block4" 
+        "block4"
+    }
+    @media screen and (max-width:400px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:  
+        "big-block"
+        "block1"
+        "block1"
+        "block2"
+        "block2"   
+        "block3"
+        "block3"
+        "block4" 
+        "block4"
+    }
+  }
+  
+  .big-block {
+       grid-area: big-block; background-color: #fff;
+      position: relative; height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-left: 10px;
+      &:hover{
+          filter: brightness(65%);
+          cursor: pointer;
+      }
+      @media screen and (max-width:768px) {
+        height: auto;
+    }
+    }
+  .block1 {
+       grid-area: block1; background-color: #fff;
+}
+  .block2 {
+       grid-area: block2; background-color: #fff;
+}
+  .block3 {
+       grid-area: block3; background-color: #fff;
+}
+  .block4 {
+       grid-area: block4; background-color: #fff;
+}
+*{
+    transition: .6s ease all;
+}
+  .blog{
+      margin: auto;
+      &__block{
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          &:hover .block__img{
+            filter: brightness(60%);
+      }
+      &:hover{
+          cursor: pointer;
+    }
+    &:hover>.blog__icon{
+        transform: rotateX(360deg);
+    }
+    &:hover .popup-text{
+        width: 200px;
+        opacity: 1;
+        font-size: 25px;
+    }
+    }
+      &__icon{
+        padding-top: 35px;
+        padding-left: 30px;
+        width: 50px;
+        height: 50px;
+        padding-bottom: 15px;
+    }
+  }
+  .popup-text{
+      @include hansKendrick;
+      bottom: 45px;
+      left: 100px;
+      position: absolute;
+      display: inline-block;
+      margin: 0;
+      font-size: 0px;
+     
+  }
+  .blog-img{
+      height: 100%;
+      width: 100%;
+     object-fit: cover;
+     position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+
+  }
+  .block{  
+          
+      &__img{      
+          max-width: 100%;
+          object-fit: cover;
+          margin-bottom: 30px;
+         
+      } 
+  }
+  .text{
+    text-transform: uppercase;
+      margin-top: 10px;
+      line-height: 130%;
+      font-weight: 900;
+      font-size: 23px;
+      padding-right: 10px;
+      padding-left: 30px;
+      @include hansKendrick;
+      &--small{    
+          margin: 0;
+          font-size: 13px;
+          font-weight: normal;
+          color: rgba(0, 0, 0, 0.575);
+      }
+      &--small_white{
+          margin: 0;
+        z-index: 2;
+        position: relative;
+        font-size: 13px;
+        font-weight: normal;
+          color: rgba(255, 255, 255, 0.705);
+      }
+      &--big{
+          color: white;
+          font-size: 30px;
+        z-index: 2;
+        position: relative;
+        max-width: 65%;
+        @media screen and (max-width:400px) {
+           font-size: 20px;
+        }
+      }
+  }
