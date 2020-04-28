@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'HansKendrick-Regular'; /* Имя шрифта */
-    src: url(fonts/HansKendrick-Regular.otf); /* Путь к файлу со шрифтом */
+    font-family: 'HansKendrick-Regular';
+    src: url(fonts/HansKendrick-Regular.otf); 
    }
    @mixin hansKendrick {
        font-family: "HansKendrick-Regular",sans-serif ;
